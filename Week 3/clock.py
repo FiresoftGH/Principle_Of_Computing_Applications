@@ -1,30 +1,77 @@
 import turtle
+window = turtle.Screen()
+window.bgcolor("white")
+window.setup(width = 600, height = 600)
+window.title("Analog Clock")
 
-screen = turtle.Screen()
-screen.setup(500, 500)
+clock = turtle.Turtle() # Object
+clock.hideturtle()
+clock.speed(0)
+clock.pensize(3)
 
-clock = turtle.Turtle()
-clock.color('Green')
-clock.width(4)
+def clock_frame(draw, hour, minute, second):
+    # Circle Frame
+    draw.penup()
+    draw.goto(0, 210)
+    draw.setheading(180)
+    draw.color("black")
+    draw.pendown()
+    draw.circle(210)
 
-def hour_hand():
-    clock.penup()
-    clock.home()
-    clock.right(90)
+    # Draw the lines for the hour marks
+    draw.penup()
+    draw.goto(0,0)
+    draw.setheading(90)
 
-clock_label_count = 0
+    for number_in_clock in range(12):
+        draw.forward(190)
+        draw.pendown()
+        draw.forward(20)
+        draw.penup()
+        draw.goto(0, 0)
+        draw.right(30)
 
-for i in range(12):
-    clock_label_count += 1
-    clock.penup()
-    clock.setheading(-30 * (i + 3) + 75) #Turn the pen around
-    clock.forward(22)
-    clock.pendown()
-    clock.forward(15)
-    clock.penup()
-    clock.forward(20)
-    clock.write(str(clock_label_count), align="center", font=("Arial", 12, "normal"))
+    # Draw the hour hand
+    draw.penup()
+    draw.goto(0, 0)
+    draw.color("red")
+    draw.setheading(90)
+    angle = (hour / 12) * 360
+    angle += 0.5 * minute
+    draw.rt(angle)
+    draw.pendown()
+    draw.forward(100)
+    draw.stamp()
 
-clock.setpos(2, -112)
-clock.pendown()
-clock.width(2)
+    # Draw the minute hand
+    draw.penup()
+    draw.goto(0, 0)
+    draw.color("blue")
+    draw.setheading(90)
+    angle = (minute / 60) * 360
+    angle += 0.1 * second
+    draw.rt(angle)
+    draw.pendown()
+    draw.forward(150)
+    draw.stamp()
+
+    # Draw the second hand
+    draw.penup()
+    draw.goto(0, 0)
+    draw.color("green")
+    draw.setheading(90)
+    angle = (second / 60) * 360
+    draw.rt(angle)
+    draw.pendown()
+    draw.forward(170)
+    draw.stamp()
+
+hour = int(input("Hours: "))
+if hour > 12:
+    convert = hour - 12
+minute = int(input("Minutes: "))
+second = int(input("Seconds: "))
+
+clock_frame(clock, hour, minute, second)
+
+window.mainloop()

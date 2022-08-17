@@ -1,4 +1,6 @@
 import turtle
+import sys
+
 window = turtle.Screen()
 window.bgcolor("white")
 window.setup(width = 600, height = 600)
@@ -66,12 +68,29 @@ def clock_frame(draw, hour, minute, second):
     draw.forward(170)
     draw.stamp()
 
-hour = int(input("Hours: "))
-if hour > 12:
-    convert = hour - 12
-minute = int(input("Minutes: "))
-second = int(input("Seconds: "))
+try:
+    hour = int(input("Hours: "))
+    minute = int(input("Minutes: "))
+    second = int(input("Seconds: "))
+    if hour > 12:
+        convert = hour - 12
+        hour = convert
+    elif hour < 0:
+        print("Invalid Time")
+        
+    elif minute > 59 or minute < 0:
+        print("Invalid Time")
+        
+    elif second > 59 or second < 0:
+        print("Invalid Time")
+    else:
+        clock_frame(clock, hour, minute, second)
+        
+    window.mainloop()
 
-clock_frame(clock, hour, minute, second)
+except TypeError:
+    print("Please enter an integer")
 
-window.mainloop()
+except KeyboardInterrupt:
+    print("Exiting...")
+    sys.exit(0)

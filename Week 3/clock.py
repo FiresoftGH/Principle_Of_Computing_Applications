@@ -72,10 +72,8 @@ try:
     hour = int(input("Hours: "))
     minute = int(input("Minutes: "))
     second = int(input("Seconds: "))
-    if hour > 12:
-        convert = hour - 12
-        hour = convert
-    elif hour < 0:
+
+    if hour < 0:
         print("Invalid Time")
         
     elif minute > 59 or minute < 0:
@@ -84,6 +82,9 @@ try:
     elif second > 59 or second < 0:
         print("Invalid Time")
     else:
+        if hour > 12:
+            convert = hour - 12
+            hour = convert
         clock_frame(clock, hour, minute, second)
         
     window.mainloop()

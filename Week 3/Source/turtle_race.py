@@ -64,12 +64,18 @@ def turtle_placement(name, color, speed, size):
             
     if color == "grey":
         name.setpos(-500, 200)
+
+leap_value = 100
             
-def turtle_movement(name, speed, energy, state):
-    while energy > 0:
-        leap = random.randint(50, 200)
-        energy -= random.randint(20, 30)
-        name.forward(leap)
+# def turtle_movement(name, speed, energy, state):
+#     while energy > 0:
+#         leap = random.randint(50, 200)
+#         energy -= random.randint(20, 30)
+#         leap_value = leap
+#         # name.forward(leap)
+
+def turtle_ai(name, leap):
+    name.forward(leap)
 
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
@@ -83,11 +89,17 @@ turtle_placement(racer_3, drunk_turtle.color, drunk_turtle.speed, drunk_turtle.s
 turtle_placement(racer_4, ninja_turtle.color, ninja_turtle.speed, ninja_turtle.size)
 turtle_placement(racer_5, giga_turtle.color, giga_turtle.speed, giga_turtle.size)
 
-turtle_movement(racer_1, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-turtle_movement(racer_2, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-turtle_movement(racer_3, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-turtle_movement(racer_4, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-turtle_movement(racer_5, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+# turtle_movement(racer_1, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+# turtle_movement(racer_2, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+# turtle_movement(racer_3, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+# turtle_movement(racer_4, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+# turtle_movement(racer_5, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+
+turtle_ai(racer_1, leap_value)
+turtle_ai(racer_2, leap_value)
+turtle_ai(racer_3, leap_value)
+turtle_ai(racer_4, leap_value)
+turtle_ai(racer_5, leap_value)
 
 
 window.mainloop()

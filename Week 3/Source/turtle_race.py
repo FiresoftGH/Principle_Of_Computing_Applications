@@ -1,13 +1,24 @@
 import turtle
-
+import random
 import time
-from winreg import DisableReflectionKey
+import sys
 
 window = turtle.Screen()
 window.bgcolor("white")
 window.setup(width = 1200, height = 600)
 window.title("Turtle Race")
-turtle.hideturtle()
+
+racer_1 = turtle.Turtle()
+racer_2 = turtle.Turtle()
+racer_3 = turtle.Turtle()
+racer_4 = turtle.Turtle()
+racer_5 = turtle.Turtle()
+
+racer_1.hideturtle()
+racer_2.hideturtle()
+racer_3.hideturtle()
+racer_4.hideturtle()
+racer_5.hideturtle()
 
 def draw_background():
     pen = turtle.Turtle()
@@ -23,48 +34,97 @@ def draw_background():
 
 draw_background()
 
-class NormalTurtle:
-    def __init__(self, name, color, speed, size, energy, state):
-        self.name = name
-        name = turtle.Turtle()
-        name.shape("turtle")
-        name.penup()
-
-        self.color = name.color(color)
-        self.speed = name.speed(speed)
-        self.size = name.turtlesize(stretch_len = size, stretch_wid = size)
-        self.energy = energy
+class DefineTurtle:
+    def __init__(self, color, speed, size, energy, state):
         self.state = state
+        self.size = size
+        self.color = color
+        self.speed = speed
+        # self.color = name.color(color)
+        # self.speed = name.speed(speed)
+        # self.size = name.turtlesize(stretch_len = size, stretch_wid = size)
+        self.energy = energy
 
-        if color == "black":
-            name.setpos(-500, 100)
-        if color == "blue":
-            name.setpos(-500, -100)
-        if color == "green":
-            name.setpos(-500, 0)
-        if color == "red":
-            name.setpos(-500, -200)
-        if color == "grey":
-            name.setpos(-500, 200)
+        # if color == "black":
+        #     name.setpos(-500, 100)
+            
+        # if color == "blue":
+        #     name.setpos(-500, -100)
+            
+        # if color == "green":
+        #     name.setpos(-500, 0)
+            
+        # if color == "red":
+        #     name.setpos(-500, -200)
+            
+        # if color == "grey":
+        #     name.setpos(-500, 200)
+
+def turtle_placement(name, color, speed, size):
+    name.showturtle()
+    name.shape("turtle")
+    name.penup()
+    name.speed(speed)
+    name.color(color)
+    name.turtlesize(stretch_len = size, stretch_wid = size)
+
+    if color == "black":
+        name.setpos(-500, 100)
+            
+    if color == "blue":
+        name.setpos(-500, -100)
+            
+    if color == "green":
+        name.setpos(-500, 0)
+            
+    if color == "red":
+        name.setpos(-500, -200)
+            
+    if color == "grey":
+        name.setpos(-500, 200)
+            
+def turtle_movement(name, speed, energy, state):
+
+    if state == 0:
+        while energy > 0:
+            oomph = random.randint(1, speed)
+            name.forward(10 * oomph)
+            energy_drain = random.randint(0, 10)
+            if energy_drain >= 5:
+                energy -= energy_drain * 1
+            if energy_drain < 5:
+                    energy -= energy_drain * 0.5
     
-    # def movement_calculations(self):
+    if state == 1:
+        while energy > 0:
+            oomph = random.randint(1, speed)
+            name.forward(oomph)
+            energy_drain = random.randint(0, 10)
+            if energy_drain >= 5:
+                energy -= energy_drain * 1
+            if energy_drain < 5:
+                    energy -= energy_drain * 0.5
+    
 
-# class TurtleMovement:
-#     def __init__(self, name, state, energy):
-#         self.state = state
-#         self.energy = energy
-#         if state == 0:
-#             while energy > 0:
-#                 name.foward(200)
-                
-                
 
+normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
+large_turtle = DefineTurtle("black", 3, 3, 150, 1)
+drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
+ninja_turtle = DefineTurtle("red", 10, 2, 200, 3)
+giga_turtle = DefineTurtle("grey", 10, 3, 300, 4)
 
-normal_turtle = NormalTurtle("normal", "blue", 6, 1, 100, 0)
-large_turtle = NormalTurtle("large", "black", 3, 3, 150, 0)
-drunk_turtle = NormalTurtle("drunk", "green", 8, 1, 100, 1)
-ninja_turtle = NormalTurtle("ninja", "red", 10, 2, 200, 2)
-giga_chad_turtle = NormalTurtle("giga_chad","grey", 10, 3, 300, 3)
+turtle_placement(racer_1, normal_turtle.color, normal_turtle.speed, normal_turtle.size)
+turtle_placement(racer_2, large_turtle.color, large_turtle.speed, large_turtle.size)
+turtle_placement(racer_3, drunk_turtle.color, drunk_turtle.speed, drunk_turtle.size)
+turtle_placement(racer_4, ninja_turtle.color, ninja_turtle.speed, ninja_turtle.size)
+turtle_placement(racer_5, giga_turtle.color, giga_turtle.speed, giga_turtle.size)
+
+turtle_movement(racer_1, normal_turtle.speed())
+turtle_movement(racer_2)
+turtle_movement(racer_3)
+turtle_movement(racer_4)
+turtle_movement(racer_5)
+
 
 window.mainloop()
         

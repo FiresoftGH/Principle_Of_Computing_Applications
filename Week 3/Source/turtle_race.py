@@ -40,25 +40,7 @@ class DefineTurtle:
         self.size = size
         self.color = color
         self.speed = speed
-        # self.color = name.color(color)
-        # self.speed = name.speed(speed)
-        # self.size = name.turtlesize(stretch_len = size, stretch_wid = size)
         self.energy = energy
-
-        # if color == "black":
-        #     name.setpos(-500, 100)
-            
-        # if color == "blue":
-        #     name.setpos(-500, -100)
-            
-        # if color == "green":
-        #     name.setpos(-500, 0)
-            
-        # if color == "red":
-        #     name.setpos(-500, -200)
-            
-        # if color == "grey":
-        #     name.setpos(-500, 200)
 
 def turtle_placement(name, color, speed, size):
     name.showturtle()
@@ -119,11 +101,11 @@ turtle_placement(racer_3, drunk_turtle.color, drunk_turtle.speed, drunk_turtle.s
 turtle_placement(racer_4, ninja_turtle.color, ninja_turtle.speed, ninja_turtle.size)
 turtle_placement(racer_5, giga_turtle.color, giga_turtle.speed, giga_turtle.size)
 
-turtle_movement(racer_1, normal_turtle.speed())
-turtle_movement(racer_2)
-turtle_movement(racer_3)
-turtle_movement(racer_4)
-turtle_movement(racer_5)
+turtle_movement(racer_1, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+turtle_movement(racer_2, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+turtle_movement(racer_3, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+turtle_movement(racer_4, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
+turtle_movement(racer_5, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
 
 
 window.mainloop()

@@ -66,28 +66,10 @@ def turtle_placement(name, color, speed, size):
         name.setpos(-500, 200)
             
 def turtle_movement(name, speed, energy, state):
-
-    if state == 0:
-        while energy > 0:
-            oomph = random.randint(1, speed)
-            name.forward(10 * oomph)
-            energy_drain = random.randint(0, 10)
-            if energy_drain >= 5:
-                energy -= energy_drain * 1
-            if energy_drain < 5:
-                    energy -= energy_drain * 0.5
-    
-    if state == 1:
-        while energy > 0:
-            oomph = random.randint(1, speed)
-            name.forward(oomph)
-            energy_drain = random.randint(0, 10)
-            if energy_drain >= 5:
-                energy -= energy_drain * 1
-            if energy_drain < 5:
-                    energy -= energy_drain * 0.5
-    
-
+    while energy > 0:
+        leap = random.randint(50, 200)
+        energy -= random.randint(20, 30)
+        name.forward(leap)
 
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)

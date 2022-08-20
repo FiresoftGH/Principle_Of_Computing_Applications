@@ -64,7 +64,7 @@ class DefineTurtle:
             racer_2.color(self.color)
             racer_2.speed(self.speed)
             racer_2.shapesize(stretch_len = self.size, stretch_wid = self.size)
-            racer_2.showturtle()
+            racer_2.showturtle() 
 
         if self.color == "green":
             racer_3.penup()
@@ -92,15 +92,31 @@ class DefineTurtle:
 
     def movement(self):
         if self.state == 0:
-            racer_1.forward(100)
+            while self.energy > 0:
+                self.energy -= random.randint(10, 30)
+                racer_1.forward(100)
+
         if self.state == 1:
-            racer_2.forward(120)
+            while self.energy > 0:
+                self.energy -= random.randint(15, 30)
+                racer_2.forward(80)
+
         if self.state == 2:
-            racer_3.forward(140)
+            while self.energy > 0:
+                self.energy -= random.randint(5, 10)
+                racer_3.forward(120)
+                drunkness = random.randint(10, 90)
+                racer_3.right(drunkness)
+                racer_3.forward(140)
+
         if self.state == 3:
-            racer_4.forward(160)
+            while self.energy > 0:
+                self.energy -= random.randint(25, 50)
+                racer_4.forward(160)
         if self.state == 4:
-            racer_5.forward(160)
+            while self.energy > 0:
+                self.energy -= random.randint(5, 10)
+                racer_5.forward(160)
 
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)

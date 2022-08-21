@@ -129,7 +129,7 @@ class DefineTurtle:
             while self.energy > 0:
                 self.energy -= random.randint(5, 10)
                 racer_5.forward(160)
-        
+ 
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
 drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
@@ -142,10 +142,28 @@ drunk_turtle.placement()
 ninja_turtle.placement()
 giga_turtle.placement()
 
-normal_turtle.movement()
-large_turtle.movement()
-drunk_turtle.movement()
-ninja_turtle.movement()
-giga_turtle.movement()
+thread_1 = threading.Thread(target = normal_turtle.movement())
+thread_2 = threading.Thread(target = large_turtle.movement())
+thread_3 = threading.Thread(target = drunk_turtle.movement())
+thread_4 = threading.Thread(target = ninja_turtle.movement())
+thread_5 = threading.Thread(target = giga_turtle.movement())
+
+thread_1.start()
+thread_2.start()
+thread_3.start()
+thread_4.start()
+thread_5.start()
+
+thread_1.join()
+thread_2.join()
+thread_3.join()
+thread_4.join()
+thread_5.join()
+
+# normal_turtle.movement()
+# large_turtle.movement()
+# drunk_turtle.movement()
+# ninja_turtle.movement()
+# giga_turtle.movement()
 
 window.mainloop()

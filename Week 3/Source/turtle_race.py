@@ -104,32 +104,38 @@ class DefineTurtle:
 
     def movement(self):
         if self.state == 0:
+            print(1)
             while self.energy > 0:
-                self.energy -= random.randint(10, 30)
+                self.energy -= random.randint(5, 10)
                 racer_1.forward(100)
 
         if self.state == 1:
+            print(2)
             while self.energy > 0:
-                self.energy -= random.randint(15, 30)
+                self.energy -= random.randint(15, 50)
                 racer_2.forward(80)
 
         if self.state == 2:
+            print(3)
             while self.energy > 0:
-                self.energy -= random.randint(15, 30)
+                self.energy -= random.randint(15, 100)
                 racer_3.forward(120)
                 drunkness = random.randint(10, 90)
                 racer_3.right(drunkness)
                 racer_3.forward(140)
 
         if self.state == 3:
+            print(4)
             while self.energy > 0:
-                self.energy -= random.randint(25, 50)
+                self.energy -= random.randint(25, 70)
                 racer_4.forward(160)
+
         if self.state == 4:
+            print(5)
             while self.energy > 0:
-                self.energy -= random.randint(5, 10)
+                self.energy -= random.randint(5, 100)
                 racer_5.forward(160)
- 
+                
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
 drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
@@ -142,23 +148,25 @@ drunk_turtle.placement()
 ninja_turtle.placement()
 giga_turtle.placement()
 
-thread_1 = threading.Thread(target = normal_turtle.movement())
-thread_2 = threading.Thread(target = large_turtle.movement())
-thread_3 = threading.Thread(target = drunk_turtle.movement())
-thread_4 = threading.Thread(target = ninja_turtle.movement())
-thread_5 = threading.Thread(target = giga_turtle.movement())
+if __name__ =="__main__":
 
-thread_1.start()
-thread_2.start()
-thread_3.start()
-thread_4.start()
-thread_5.start()
+    thread_1 = threading.Thread(target = normal_turtle.movement())
+    thread_2 = threading.Thread(target = large_turtle.movement())
+    thread_3 = threading.Thread(target = drunk_turtle.movement())
+    thread_4 = threading.Thread(target = ninja_turtle.movement())
+    thread_5 = threading.Thread(target = giga_turtle.movement())
 
-thread_1.join()
-thread_2.join()
-thread_3.join()
-thread_4.join()
-thread_5.join()
+    thread_1.start()
+    thread_2.start()
+    thread_3.start()
+    thread_4.start()
+    thread_5.start()
+
+    thread_1.join()
+    thread_2.join()
+    thread_3.join()
+    thread_4.join()
+    thread_5.join()
 
 # normal_turtle.movement()
 # large_turtle.movement()

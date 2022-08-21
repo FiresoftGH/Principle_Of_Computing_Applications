@@ -1,6 +1,6 @@
 import turtle
 import random
-import time
+import threading
 import sys
 
 window = turtle.Screen()
@@ -13,12 +13,30 @@ racer_2 = turtle.Turtle()
 racer_3 = turtle.Turtle()
 racer_4 = turtle.Turtle()
 racer_5 = turtle.Turtle()
+text_pen = turtle.Turtle()
+
+racer_1.shape("turtle")
+racer_2.shape("turtle")
+racer_3.shape("turtle")
+racer_4.shape("turtle")
+racer_5.shape("turtle")
+# text_pen.shape("arrow")
 
 racer_1.hideturtle()
 racer_2.hideturtle()
 racer_3.hideturtle()
 racer_4.hideturtle()
 racer_5.hideturtle()
+text_pen.hideturtle()
+
+def victory_message(color):
+    text_pen.penup()
+    text_pen.goto(0, 100)
+    text_pen.write(color, True, align = "center", font = ("Arial", 14, "normal"))
+    text_pen.goto(50, 100)
+    text_pen.write("wins", True, align = "center", font = ("Arial", 14, "normal"))
+
+# victory_message("green")
 
 def draw_background():
     pen = turtle.Turtle()
@@ -42,65 +60,92 @@ class DefineTurtle:
         self.speed = speed
         self.energy = energy
 
-def turtle_placement(name, color, speed, size):
-    name.showturtle()
-    name.shape("turtle")
-    name.penup()
-    name.speed(speed)
-    name.color(color)
-    name.turtlesize(stretch_len = size, stretch_wid = size)
+    def placement(self):
+        if self.color == "black":
+            racer_1.penup()
+            racer_1.showturtle()
+            racer_1.setpos(-500, 100)
+            racer_1.color(self.color)
+            racer_1.speed(self.speed)
+            racer_1.shapesize(stretch_len = self.size, stretch_wid = self.size)
+            racer_2.showturtle()
 
-    if color == "black":
-        name.setpos(-500, 100)
-            
-    if color == "blue":
-        name.setpos(-500, -100)
-            
-    if color == "green":
-        name.setpos(-500, 0)
-            
-    if color == "red":
-        name.setpos(-500, -200)
-            
-    if color == "grey":
-        name.setpos(-500, 200)
+        if self.color == "blue":
+            racer_2.penup()
+            racer_2.setpos(-500, 0)
+            racer_2.color(self.color)
+            racer_2.speed(self.speed)
+            racer_2.shapesize(stretch_len = self.size, stretch_wid = self.size)
+            racer_2.showturtle() 
 
-leap_value = 100
-            
-# def turtle_movement(name, speed, energy, state):
-#     while energy > 0:
-#         leap = random.randint(50, 200)
-#         energy -= random.randint(20, 30)
-#         leap_value = leap
-#         # name.forward(leap)
+        if self.color == "green":
+            racer_3.penup()
+            racer_3.setpos(-500, -100)
+            racer_3.color(self.color)
+            racer_3.speed(self.speed)
+            racer_3.shapesize(stretch_len = self.size, stretch_wid = self.size)
+            racer_3.showturtle()
 
-def turtle_ai(name, leap):
-    name.forward(leap)
+        if self.color == "red":
+            racer_4.penup()
+            racer_4.setpos(-500, 200)
+            racer_4.color(self.color)
+            racer_4.speed(self.speed)
+            racer_4.shapesize(stretch_len = self.size, stretch_wid = self.size)
+            racer_4.showturtle()
 
+        if self.color == "grey":
+            racer_5.penup()
+            racer_5.setpos(-500, -200)
+            racer_5.color(self.color)
+            racer_5.speed(self.speed)
+            racer_5.shapesize(stretch_len = self.size, stretch_wid = self.size)
+            racer_5.showturtle()
+
+    def movement(self):
+        if self.state == 0:
+            while self.energy > 0:
+                self.energy -= random.randint(10, 30)
+                racer_1.forward(100)
+
+        if self.state == 1:
+            while self.energy > 0:
+                self.energy -= random.randint(15, 30)
+                racer_2.forward(80)
+
+        if self.state == 2:
+            while self.energy > 0:
+                self.energy -= random.randint(15, 30)
+                racer_3.forward(120)
+                drunkness = random.randint(10, 90)
+                racer_3.right(drunkness)
+                racer_3.forward(140)
+
+        if self.state == 3:
+            while self.energy > 0:
+                self.energy -= random.randint(25, 50)
+                racer_4.forward(160)
+        if self.state == 4:
+            while self.energy > 0:
+                self.energy -= random.randint(5, 10)
+                racer_5.forward(160)
+        
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
 drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
 ninja_turtle = DefineTurtle("red", 10, 2, 200, 3)
 giga_turtle = DefineTurtle("grey", 10, 3, 300, 4)
 
-turtle_placement(racer_1, normal_turtle.color, normal_turtle.speed, normal_turtle.size)
-turtle_placement(racer_2, large_turtle.color, large_turtle.speed, large_turtle.size)
-turtle_placement(racer_3, drunk_turtle.color, drunk_turtle.speed, drunk_turtle.size)
-turtle_placement(racer_4, ninja_turtle.color, ninja_turtle.speed, ninja_turtle.size)
-turtle_placement(racer_5, giga_turtle.color, giga_turtle.speed, giga_turtle.size)
+normal_turtle.placement()
+large_turtle.placement()
+drunk_turtle.placement()
+ninja_turtle.placement()
+giga_turtle.placement()
 
-# turtle_movement(racer_1, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-# turtle_movement(racer_2, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-# turtle_movement(racer_3, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-# turtle_movement(racer_4, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-# turtle_movement(racer_5, normal_turtle.speed, normal_turtle.energy, normal_turtle.state)
-
-turtle_ai(racer_1, leap_value)
-turtle_ai(racer_2, leap_value)
-turtle_ai(racer_3, leap_value)
-turtle_ai(racer_4, leap_value)
-turtle_ai(racer_5, leap_value)
-
+normal_turtle.movement()
+large_turtle.movement()
+drunk_turtle.movement()
+ninja_turtle.movement()
+giga_turtle.movement()
 
 window.mainloop()
-        

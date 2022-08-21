@@ -1,6 +1,6 @@
 import turtle
 import random
-import time
+import threading
 import sys
 
 window = turtle.Screen()
@@ -13,18 +13,30 @@ racer_2 = turtle.Turtle()
 racer_3 = turtle.Turtle()
 racer_4 = turtle.Turtle()
 racer_5 = turtle.Turtle()
+text_pen = turtle.Turtle()
 
 racer_1.shape("turtle")
 racer_2.shape("turtle")
 racer_3.shape("turtle")
 racer_4.shape("turtle")
 racer_5.shape("turtle")
+# text_pen.shape("arrow")
 
 racer_1.hideturtle()
 racer_2.hideturtle()
 racer_3.hideturtle()
 racer_4.hideturtle()
 racer_5.hideturtle()
+text_pen.hideturtle()
+
+def victory_message(color):
+    text_pen.penup()
+    text_pen.goto(0, 100)
+    text_pen.write(color, True, align = "center", font = ("Arial", 14, "normal"))
+    text_pen.goto(50, 100)
+    text_pen.write("wins", True, align = "center", font = ("Arial", 14, "normal"))
+
+# victory_message("green")
 
 def draw_background():
     pen = turtle.Turtle()
@@ -103,7 +115,7 @@ class DefineTurtle:
 
         if self.state == 2:
             while self.energy > 0:
-                self.energy -= random.randint(5, 10)
+                self.energy -= random.randint(15, 30)
                 racer_3.forward(120)
                 drunkness = random.randint(10, 90)
                 racer_3.right(drunkness)
@@ -117,7 +129,7 @@ class DefineTurtle:
             while self.energy > 0:
                 self.energy -= random.randint(5, 10)
                 racer_5.forward(160)
-
+        
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
 drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)

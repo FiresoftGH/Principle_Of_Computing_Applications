@@ -121,7 +121,11 @@ class DefineTurtle:
                 self.energy -= random.randint(15, 100)
                 racer_3.forward(120)
                 drunkness = random.randint(10, 90)
-                racer_3.right(drunkness)
+                choice = random.choice([1,2])
+                if choice == 1:
+                    racer_3.right(drunkness)
+                else:
+                    racer_3.left(drunkness)
                 racer_3.forward(140)
 
         if self.state == 3:
@@ -168,10 +172,5 @@ if __name__ =="__main__":
     thread_4.join()
     thread_5.join()
 
-# normal_turtle.movement()
-# large_turtle.movement()
-# drunk_turtle.movement()
-# ninja_turtle.movement()
-# giga_turtle.movement()
 
 window.mainloop()

@@ -1,11 +1,9 @@
 import turtle
 import random
-import threading
-import sys
 
 window = turtle.Screen()
 window.bgcolor("white")
-window.setup(width = 1200, height = 600)
+window.setup(width = 600, height = 600)
 window.title("Turtle Race")
 
 racer_1 = turtle.Turtle()
@@ -20,7 +18,6 @@ racer_2.shape("turtle")
 racer_3.shape("turtle")
 racer_4.shape("turtle")
 racer_5.shape("turtle")
-# text_pen.shape("arrow")
 
 racer_1.hideturtle()
 racer_2.hideturtle()
@@ -35,8 +32,6 @@ def victory_message(color):
     text_pen.write(color, True, align = "center", font = ("Arial", 14, "normal"))
     text_pen.goto(50, 100)
     text_pen.write("wins", True, align = "center", font = ("Arial", 14, "normal"))
-
-# victory_message("green")
 
 def draw_background():
     pen = turtle.Turtle()
@@ -103,43 +98,28 @@ class DefineTurtle:
             racer_5.showturtle()
 
     def movement(self):
-        if self.state == 0:
-            print(1)
-            while self.energy > 0:
-                self.energy -= random.randint(5, 10)
-                racer_1.forward(100)
+        while self.energy > 0:
+            self.energy -= 1
+            choice = random.choice([1,2])
+            if choice == 1:
+                racer_1.right(random.randint(0, 90))
+                racer_2.right(random.randint(0, 90))
+                racer_3.right(random.randint(0, 90))
+                racer_4.right(random.randint(0, 90))
+                racer_5.right(random.randint(0, 90))
+            else:
+                racer_1.left(random.randint(0, 90))
+                racer_2.left(random.randint(0, 90))
+                racer_3.left(random.randint(0, 90))
+                racer_4.left(random.randint(0, 90))
+                racer_5.left(random.randint(0, 90))
 
-        if self.state == 1:
-            print(2)
-            while self.energy > 0:
-                self.energy -= random.randint(15, 50)
-                racer_2.forward(80)
-
-        if self.state == 2:
-            print(3)
-            while self.energy > 0:
-                self.energy -= random.randint(15, 100)
-                racer_3.forward(120)
-                drunkness = random.randint(10, 90)
-                choice = random.choice([1,2])
-                if choice == 1:
-                    racer_3.right(drunkness)
-                else:
-                    racer_3.left(drunkness)
-                racer_3.forward(140)
-
-        if self.state == 3:
-            print(4)
-            while self.energy > 0:
-                self.energy -= random.randint(25, 70)
-                racer_4.forward(160)
-
-        if self.state == 4:
-            print(5)
-            while self.energy > 0:
-                self.energy -= random.randint(5, 100)
-                racer_5.forward(160)
-                
+            racer_1.forward(10)
+            racer_2.forward(10)
+            racer_3.forward(10)
+            racer_4.forward(10)
+            racer_5.forward(10)
+        
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
 drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
@@ -151,26 +131,88 @@ large_turtle.placement()
 drunk_turtle.placement()
 ninja_turtle.placement()
 giga_turtle.placement()
-
-if __name__ =="__main__":
-
-    thread_1 = threading.Thread(target = normal_turtle.movement())
-    thread_2 = threading.Thread(target = large_turtle.movement())
-    thread_3 = threading.Thread(target = drunk_turtle.movement())
-    thread_4 = threading.Thread(target = ninja_turtle.movement())
-    thread_5 = threading.Thread(target = giga_turtle.movement())
-
-    thread_1.start()
-    thread_2.start()
-    thread_3.start()
-    thread_4.start()
-    thread_5.start()
-
-    thread_1.join()
-    thread_2.join()
-    thread_3.join()
-    thread_4.join()
-    thread_5.join()
-
+    
+ 
+normal_turtle.movement()
 
 window.mainloop()
+
+while True:
+    if racer_1.ycor() == 500:
+        victory_message(normal_turtle.color)
+
+    elif racer_2.ycor() == 500:
+        victory_message(large_turtle.color)
+
+    elif racer_3.ycor() == 500:
+        victory_message(drunk_turtle.color)
+
+    elif racer_4.ycor() == 500:
+        victory_message(ninja_turtle.color)
+
+    elif racer_5.ycor() == 500:
+        victory_message(giga_turtle.color)
+
+    elif racer_1.xcor() > 600:
+        racer_1.goto(-600, racer_1.ycor())
+
+    elif racer_1.xcor() < -600:
+        racer_1.goto(-600, racer_1.ycor())
+
+    elif racer_1.ycor() > 600:
+        racer_1.goto(racer_1.xcor(), 590)
+
+    elif racer_1.ycor() < -600:
+        racer_1.goto(racer_1.xcor(), -590)
+
+    elif racer_2.xcor() > 600:
+        racer_2.goto(-600, racer_2.ycor())
+
+    elif racer_2.xcor() < -600:
+        racer_2.goto(-600, racer_2.ycor())
+
+    elif racer_2.ycor() > 600:
+        racer_2.goto(racer_2.xcor(), 590)
+
+    elif racer_2.ycor() < -600:
+        racer_2.goto(racer_2.xcor(), -590)
+    
+    elif racer_3.xcor() > 600:
+        racer_3.goto(-600, racer_3.ycor())
+
+    elif racer_3.xcor() < -600:
+        racer_3.goto(-600, racer_3.ycor())
+
+    elif racer_3.ycor() > 600:
+        racer_3.goto(racer_3.xcor(), 590)
+
+    elif racer_3.ycor() < -600:
+        racer_3.goto(racer_3.xcor(), -590)
+
+    elif racer_4.xcor() > 600:
+        racer_4.goto(-600, racer_4.ycor())
+
+    elif racer_4.xcor() < -600:
+        racer_4.goto(-600, racer_4.ycor())
+
+    elif racer_4.ycor() > 600:
+        racer_4.goto(racer_4.xcor(), 590)
+
+    elif racer_4.ycor() < -600:
+        racer_4.goto(racer_4.xcor(), -590)
+
+    elif racer_5.xcor() > 600:
+        racer_5.goto(-600, racer_5.ycor())
+
+    elif racer_5.xcor() < -600:
+        racer_5.goto(-600, racer_5.ycor())
+
+    elif racer_5.ycor() > 600:
+        racer_5.goto(racer_5.xcor(), 590)
+
+    elif racer_5.ycor() < -600:
+        racer_5.goto(racer_5.xcor(), -590)
+    
+    
+    
+    # if racer_1.ycor() > 600 or racer

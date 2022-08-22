@@ -1,7 +1,7 @@
 import turtle
 import random
 import threading
-import sys
+import queue
 
 window = turtle.Screen()
 window.bgcolor("white")
@@ -20,7 +20,6 @@ racer_2.shape("turtle")
 racer_3.shape("turtle")
 racer_4.shape("turtle")
 racer_5.shape("turtle")
-# text_pen.shape("arrow")
 
 racer_1.hideturtle()
 racer_2.hideturtle()
@@ -102,68 +101,90 @@ class DefineTurtle:
             racer_5.shapesize(stretch_len = self.size, stretch_wid = self.size)
             racer_5.showturtle()
 
-    def movement(self):
+    def movement(self, racer_1, racer_2, racer_3, racer_4, racer_5):
+
         if self.state == 0:
+            
             while self.energy > 0:
-                self.energy -= random.randint(10, 30)
-                racer_1.forward(100)
+                self.energy -= 1 #random.randint(15, 100)
+                drunkness = random.randint(10, 90)
+                choice = random.choice([1,2])
+                if choice == 1:
+                    racer_1.right(drunkness)
+                else:
+                    racer_1.left(drunkness)
+                racer_1.forward(10)
+                continue
 
         if self.state == 1:
+            
             while self.energy > 0:
-                self.energy -= random.randint(15, 30)
-                racer_2.forward(80)
+                self.energy -= 1 #random.randint(15, 100)
+                drunkness = random.randint(10, 90)
+                choice = random.choice([1,2])
+                if choice == 1:
+                    racer_2.right(drunkness)
+                else:
+                    racer_2.left(drunkness)
+                racer_2.forward(10)
+                continue
 
         if self.state == 2:
+            
             while self.energy > 0:
-                self.energy -= random.randint(15, 30)
-                racer_3.forward(120)
+                self.energy -= 1 #random.randint(15, 100)
                 drunkness = random.randint(10, 90)
-                racer_3.right(drunkness)
-                racer_3.forward(140)
+                choice = random.choice([1,2])
+                if choice == 1:
+                    racer_3.right(drunkness)
+                else:
+                    racer_3.left(drunkness)
+                racer_3.forward(10)
+                continue
 
         if self.state == 3:
+            
             while self.energy > 0:
-                self.energy -= random.randint(25, 50)
-                racer_4.forward(160)
+                self.energy -= 1 #random.randint(15, 100)
+                drunkness = random.randint(10, 90)
+                choice = random.choice([1,2])
+                if choice == 1:
+                    racer_4.right(drunkness)
+                else:
+                    racer_4.left(drunkness)
+                racer_4.forward(10)
+                continue
+
         if self.state == 4:
+            
             while self.energy > 0:
-                self.energy -= random.randint(5, 10)
-                racer_5.forward(160)
- 
+                self.energy -= 1 #random.randint(15, 100)
+                drunkness = random.randint(10, 90)
+                choice = random.choice([1,2])
+                if choice == 1:
+                    racer_5.right(drunkness)
+                else:
+                    racer_5.left(drunkness)
+                racer_5.forward(10)
+                continue
+
 normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
 large_turtle = DefineTurtle("black", 3, 3, 150, 1)
 drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
 ninja_turtle = DefineTurtle("red", 10, 2, 200, 3)
 giga_turtle = DefineTurtle("grey", 10, 3, 300, 4)
 
-normal_turtle.placement()
-large_turtle.placement()
-drunk_turtle.placement()
-ninja_turtle.placement()
-giga_turtle.placement()
-
-thread_1 = threading.Thread(target = normal_turtle.movement())
-thread_2 = threading.Thread(target = large_turtle.movement())
-thread_3 = threading.Thread(target = drunk_turtle.movement())
-thread_4 = threading.Thread(target = ninja_turtle.movement())
-thread_5 = threading.Thread(target = giga_turtle.movement())
-
-thread_1.start()
-thread_2.start()
-thread_3.start()
-thread_4.start()
-thread_5.start()
-
-thread_1.join()
-thread_2.join()
-thread_3.join()
-thread_4.join()
-thread_5.join()
+# normal_turtle.placement()
+# large_turtle.placement()
+# drunk_turtle.placement()
+# ninja_turtle.placement()
+# giga_turtle.placement()
 
 # normal_turtle.movement()
 # large_turtle.movement()
 # drunk_turtle.movement()
 # ninja_turtle.movement()
 # giga_turtle.movement()
+
 
 window.mainloop()

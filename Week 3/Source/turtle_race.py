@@ -120,65 +120,65 @@ class DefineTurtle:
                 print("Winner")
                 break
 
-            # elif racer_1.xcor() > 550:
-                racer_1.goto(-540, racer_1.ycor())
+            # elif racer_1.xcor() > 450:
+                # racer_1.goto(-440, racer_1.ycor())
 
-            elif racer_1.xcor() < -550:
-                racer_1.goto(-540, racer_1.ycor())
+            elif racer_1.xcor() < -450:
+                racer_1.goto(-440, racer_1.ycor())
 
-            elif racer_1.ycor() > 550:
-                racer_1.goto(racer_1.xcor(), 540)
+            elif racer_1.ycor() > 450:
+                racer_1.goto(racer_1.xcor(), 440)
 
-            elif racer_1.ycor() < -550:
-                racer_1.goto(racer_1.xcor(), -540)
+            elif racer_1.ycor() < -450:
+                racer_1.goto(racer_1.xcor(), -440)
 
-            # elif racer_2.xcor() > 550:
-            #     racer_2.goto(-550, racer_2.ycor())
+            # elif racer_2.xcor() > 450:
+            #     racer_2.goto(-450, racer_2.ycor())
 
-            elif racer_2.xcor() < -550:
-                racer_2.goto(-540, racer_2.ycor())
+            elif racer_2.xcor() < -450:
+                racer_2.goto(-440, racer_2.ycor())
 
-            elif racer_2.ycor() > 550:
-                racer_2.goto(racer_2.xcor(), 540)
+            elif racer_2.ycor() > 450:
+                racer_2.goto(racer_2.xcor(), 440)
 
-            elif racer_2.ycor() < -550:
-                racer_2.goto(racer_2.xcor(), -540)
+            elif racer_2.ycor() < -450:
+                racer_2.goto(racer_2.xcor(), -440)
     
-            # elif racer_3.xcor() > 550:
-            #     racer_3.goto(-550, racer_3.ycor())
+            # elif racer_3.xcor() > 450:
+            #     racer_3.goto(-450, racer_3.ycor())
 
-            elif racer_3.xcor() < -550:
-                racer_3.goto(-540, racer_3.ycor())
+            elif racer_3.xcor() < -450:
+                racer_3.goto(-440, racer_3.ycor())
 
-            elif racer_3.ycor() > 550:
-                racer_3.goto(racer_3.xcor(), 540)
+            elif racer_3.ycor() > 450:
+                racer_3.goto(racer_3.xcor(), 440)
 
-            elif racer_3.ycor() < -550:
-                racer_3.goto(racer_3.xcor(), -540)
+            elif racer_3.ycor() < -450:
+                racer_3.goto(racer_3.xcor(), -440)
 
-            # elif racer_4.xcor() > 550:
-            #     racer_4.goto(-550, racer_4.ycor())
+            # elif racer_4.xcor() > 450:
+            #     racer_4.goto(-450, racer_4.ycor())
 
-            elif racer_4.xcor() < -550:
-                racer_4.goto(-540, racer_4.ycor())
+            elif racer_4.xcor() < -450:
+                racer_4.goto(-440, racer_4.ycor())
 
-            elif racer_4.ycor() > 550:
-                racer_4.goto(racer_4.xcor(), 540)
+            elif racer_4.ycor() > 450:
+                racer_4.goto(racer_4.xcor(), 440)
 
-            elif racer_4.ycor() < -550:
-                racer_4.goto(racer_4.xcor(), -540)
+            elif racer_4.ycor() < -450:
+                racer_4.goto(racer_4.xcor(), -440)
 
             # elif racer_5.xcor() > 600:
             #     racer_5.goto(-600, racer_5.ycor())
 
-            elif racer_5.xcor() < -550:
-                racer_5.goto(-550, racer_5.ycor())
+            elif racer_5.xcor() < -450:
+                racer_5.goto(-450, racer_5.ycor())
 
-            elif racer_5.ycor() > 550:
-                racer_5.goto(racer_5.xcor(), 540)
+            elif racer_5.ycor() > 450:
+                racer_5.goto(racer_5.xcor(), 440)
 
-            elif racer_5.ycor() < -550:
-                racer_5.goto(racer_5.xcor(), -540)
+            elif racer_5.ycor() < -450:
+                racer_5.goto(racer_5.xcor(), -440)
             
             self.energy -= 1
             choice = random.choice([1,2])

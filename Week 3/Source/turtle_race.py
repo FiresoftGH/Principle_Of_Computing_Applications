@@ -27,12 +27,12 @@ racer_5.hideturtle()
 text_pen.hideturtle()
 
 
-def victory_message(color):
-    text_pen.penup()
-    text_pen.goto(0, 100)
-    text_pen.write(color, True, align = "center", font = ("Arial", 14, "normal"))
-    text_pen.goto(50, 100)
-    text_pen.write("wins", True, align = "center", font = ("Arial", 14, "normal"))
+# def victory_message(color):
+#     text_pen.penup()
+#     text_pen.goto(0, 100)
+#     text_pen.write(color, True, align = "center", font = ("Arial", 14, "normal"))
+#     text_pen.goto(50, 100)
+#     text_pen.write("wins", True, align = "center", font = ("Arial", 14, "normal"))
 
 def draw_background():
     pen = turtle.Turtle()
@@ -101,23 +101,23 @@ class DefineTurtle:
     def movement(self):
         while self.energy > 0:
             if racer_1.ycor() >= 500:
-                print("Winner")
+                print("Normal Wins")
                 break
 
             elif racer_2.ycor() >= 500:
-                print("Winner")
+                print("Large Wins")
                 break
 
             elif racer_3.ycor() >= 500:
-                print("Winner")
+                print("Drunk Wins")
                 break
 
             elif racer_4.ycor() >= 500:
-                print("Winner")
+                print("Ninja Winner")
                 break
 
             elif racer_5.ycor() >= 500:
-                print("Winner")
+                print("Giga Winner")
                 break
 
             # elif racer_1.xcor() > 450:
@@ -201,11 +201,11 @@ class DefineTurtle:
             racer_4.forward(20)
             racer_5.forward(20)
 
-normal_turtle = DefineTurtle("blue", 6, 1, 10000, 0)
-large_turtle = DefineTurtle("black", 3, 3, 15000, 1)
-drunk_turtle = DefineTurtle("green", 8, 1, 10000, 2)
-ninja_turtle = DefineTurtle("red", 10, 2, 20000, 3)
-giga_turtle = DefineTurtle("grey", 10, 3, 30000, 4)
+normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
+large_turtle = DefineTurtle("black", 3, 3, 150, 1)
+drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
+ninja_turtle = DefineTurtle("red", 10, 2, 200, 3)
+giga_turtle = DefineTurtle("grey", 10, 3, 300, 4)
 
 normal_turtle.placement()
 large_turtle.placement()

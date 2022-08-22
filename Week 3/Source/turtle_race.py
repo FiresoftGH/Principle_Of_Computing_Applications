@@ -26,6 +26,7 @@ racer_4.hideturtle()
 racer_5.hideturtle()
 text_pen.hideturtle()
 
+
 def victory_message(color):
     text_pen.penup()
     text_pen.goto(0, 100)
@@ -99,32 +100,112 @@ class DefineTurtle:
 
     def movement(self):
         while self.energy > 0:
+            if racer_1.ycor() >= 500:
+                print("Winner")
+                break
+
+            elif racer_2.ycor() >= 500:
+                print("Winner")
+                break
+
+            elif racer_3.ycor() >= 500:
+                print("Winner")
+                break
+
+            elif racer_4.ycor() >= 500:
+                print("Winner")
+                break
+
+            elif racer_5.ycor() >= 500:
+                print("Winner")
+                break
+
+            # elif racer_1.xcor() > 550:
+                racer_1.goto(-540, racer_1.ycor())
+
+            elif racer_1.xcor() < -550:
+                racer_1.goto(-540, racer_1.ycor())
+
+            elif racer_1.ycor() > 550:
+                racer_1.goto(racer_1.xcor(), 540)
+
+            elif racer_1.ycor() < -550:
+                racer_1.goto(racer_1.xcor(), -540)
+
+            # elif racer_2.xcor() > 550:
+            #     racer_2.goto(-550, racer_2.ycor())
+
+            elif racer_2.xcor() < -550:
+                racer_2.goto(-540, racer_2.ycor())
+
+            elif racer_2.ycor() > 550:
+                racer_2.goto(racer_2.xcor(), 540)
+
+            elif racer_2.ycor() < -550:
+                racer_2.goto(racer_2.xcor(), -540)
+    
+            # elif racer_3.xcor() > 550:
+            #     racer_3.goto(-550, racer_3.ycor())
+
+            elif racer_3.xcor() < -550:
+                racer_3.goto(-540, racer_3.ycor())
+
+            elif racer_3.ycor() > 550:
+                racer_3.goto(racer_3.xcor(), 540)
+
+            elif racer_3.ycor() < -550:
+                racer_3.goto(racer_3.xcor(), -540)
+
+            # elif racer_4.xcor() > 550:
+            #     racer_4.goto(-550, racer_4.ycor())
+
+            elif racer_4.xcor() < -550:
+                racer_4.goto(-540, racer_4.ycor())
+
+            elif racer_4.ycor() > 550:
+                racer_4.goto(racer_4.xcor(), 540)
+
+            elif racer_4.ycor() < -550:
+                racer_4.goto(racer_4.xcor(), -540)
+
+            # elif racer_5.xcor() > 600:
+            #     racer_5.goto(-600, racer_5.ycor())
+
+            elif racer_5.xcor() < -550:
+                racer_5.goto(-550, racer_5.ycor())
+
+            elif racer_5.ycor() > 550:
+                racer_5.goto(racer_5.xcor(), 540)
+
+            elif racer_5.ycor() < -550:
+                racer_5.goto(racer_5.xcor(), -540)
+            
             self.energy -= 1
             choice = random.choice([1,2])
             if choice == 1:
-                racer_1.right(random.randint(0, 90))
-                racer_2.right(random.randint(0, 90))
-                racer_3.right(random.randint(0, 90))
-                racer_4.right(random.randint(0, 90))
-                racer_5.right(random.randint(0, 90))
+                racer_1.right(random.randint(0, 15))
+                racer_2.right(random.randint(0, 15))
+                racer_3.right(random.randint(0, 15))
+                racer_4.right(random.randint(0, 15))
+                racer_5.right(random.randint(0, 15))
             else:
-                racer_1.left(random.randint(0, 90))
-                racer_2.left(random.randint(0, 90))
-                racer_3.left(random.randint(0, 90))
-                racer_4.left(random.randint(0, 90))
-                racer_5.left(random.randint(0, 90))
+                racer_1.left(random.randint(0, 15))
+                racer_2.left(random.randint(0, 15))
+                racer_3.left(random.randint(0, 15))
+                racer_4.left(random.randint(0, 15))
+                racer_5.left(random.randint(0, 15))
 
-            racer_1.forward(10)
-            racer_2.forward(10)
-            racer_3.forward(10)
-            racer_4.forward(10)
-            racer_5.forward(10)
-        
-normal_turtle = DefineTurtle("blue", 6, 1, 100, 0)
-large_turtle = DefineTurtle("black", 3, 3, 150, 1)
-drunk_turtle = DefineTurtle("green", 8, 1, 100, 2)
-ninja_turtle = DefineTurtle("red", 10, 2, 200, 3)
-giga_turtle = DefineTurtle("grey", 10, 3, 300, 4)
+            racer_1.forward(20)
+            racer_2.forward(20)
+            racer_3.forward(20)
+            racer_4.forward(20)
+            racer_5.forward(20)
+
+normal_turtle = DefineTurtle("blue", 6, 1, 10000, 0)
+large_turtle = DefineTurtle("black", 3, 3, 15000, 1)
+drunk_turtle = DefineTurtle("green", 8, 1, 10000, 2)
+ninja_turtle = DefineTurtle("red", 10, 2, 20000, 3)
+giga_turtle = DefineTurtle("grey", 10, 3, 30000, 4)
 
 normal_turtle.placement()
 large_turtle.placement()
@@ -135,84 +216,6 @@ giga_turtle.placement()
  
 normal_turtle.movement()
 
-window.mainloop()
-
-while True:
-    if racer_1.ycor() == 500:
-        victory_message(normal_turtle.color)
-
-    elif racer_2.ycor() == 500:
-        victory_message(large_turtle.color)
-
-    elif racer_3.ycor() == 500:
-        victory_message(drunk_turtle.color)
-
-    elif racer_4.ycor() == 500:
-        victory_message(ninja_turtle.color)
-
-    elif racer_5.ycor() == 500:
-        victory_message(giga_turtle.color)
-
-    elif racer_1.xcor() > 600:
-        racer_1.goto(-600, racer_1.ycor())
-
-    elif racer_1.xcor() < -600:
-        racer_1.goto(-600, racer_1.ycor())
-
-    elif racer_1.ycor() > 600:
-        racer_1.goto(racer_1.xcor(), 590)
-
-    elif racer_1.ycor() < -600:
-        racer_1.goto(racer_1.xcor(), -590)
-
-    elif racer_2.xcor() > 600:
-        racer_2.goto(-600, racer_2.ycor())
-
-    elif racer_2.xcor() < -600:
-        racer_2.goto(-600, racer_2.ycor())
-
-    elif racer_2.ycor() > 600:
-        racer_2.goto(racer_2.xcor(), 590)
-
-    elif racer_2.ycor() < -600:
-        racer_2.goto(racer_2.xcor(), -590)
-    
-    elif racer_3.xcor() > 600:
-        racer_3.goto(-600, racer_3.ycor())
-
-    elif racer_3.xcor() < -600:
-        racer_3.goto(-600, racer_3.ycor())
-
-    elif racer_3.ycor() > 600:
-        racer_3.goto(racer_3.xcor(), 590)
-
-    elif racer_3.ycor() < -600:
-        racer_3.goto(racer_3.xcor(), -590)
-
-    elif racer_4.xcor() > 600:
-        racer_4.goto(-600, racer_4.ycor())
-
-    elif racer_4.xcor() < -600:
-        racer_4.goto(-600, racer_4.ycor())
-
-    elif racer_4.ycor() > 600:
-        racer_4.goto(racer_4.xcor(), 590)
-
-    elif racer_4.ycor() < -600:
-        racer_4.goto(racer_4.xcor(), -590)
-
-    elif racer_5.xcor() > 600:
-        racer_5.goto(-600, racer_5.ycor())
-
-    elif racer_5.xcor() < -600:
-        racer_5.goto(-600, racer_5.ycor())
-
-    elif racer_5.ycor() > 600:
-        racer_5.goto(racer_5.xcor(), 590)
-
-    elif racer_5.ycor() < -600:
-        racer_5.goto(racer_5.xcor(), -590)
+turtle.exitonclick()
     
     
-    
-    # if racer_1.ycor() > 600 or racer

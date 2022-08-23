@@ -73,7 +73,7 @@ try:
     minute = int(input("Minutes: "))
     second = int(input("Seconds: "))
 
-    if hour < 0:
+    if hour < 0 or hour > 24:
         print("Invalid Time")
         
     elif minute > 59 or minute < 0:

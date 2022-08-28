@@ -1,15 +1,10 @@
-# import sys
-# while True:
-#     try:
-#         sum = 0
-#         i = int(input("Number: "))
-#         while i > 1:
-#             j = i - 1
-#             while j >= 0:
-#                 sum = sum + 1
-#                 j = j - 1
-#             i = i / 2
-#         print(sum)
-#     except KeyboardInterrupt:
-#         sys.exit(0)
+import numpy as np
+import matplotlib.pyplot as plot
 
+test_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+xpoints = np.array(test_array)
+ypoints = np.array(test_array)
+
+plot.plot(xpoints, ypoints)
+plot.show()

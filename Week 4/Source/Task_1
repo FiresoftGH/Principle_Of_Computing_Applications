@@ -1,7 +1,8 @@
 from time import time
 from scipy import stats
 import sys
-
+import matplotlib.pyplot as plot
+import numpy as np
 
 runtime_compare = []
 
@@ -176,10 +177,10 @@ def m09(n):
     runtime_mean()
 
 def m10(n):
-    rounds = 0
+    rounds = 1
     sum = 0
     start_time = time()
-    while rounds < n:
+    while rounds < n: # The problem had some mistakes
         sum = sum + 1
         rounds = rounds * 2
     
@@ -264,6 +265,17 @@ def run_function(select, number, repeat):
         for times in range(repeat):
             m12(number)
 
+def runtime_plot(repeat):
+    inputs = []
+    for count in range(repeat):
+        inputs.append(count + 1)
+    # print(inputs)
+
+    xpoints = np.array(inputs)
+    ypoints = np.array(runtime_compare)
+    plot.plot(xpoints, ypoints)
+    plot.show()
+
 def runtime_mean():
     print(runtime_compare)
     print(stats.trim_mean(runtime_compare, 0.1))
@@ -286,7 +298,7 @@ while True:
 
             else:
                 run_function(select, number, repeat)
-                # runtime_mean()
+                runtime_plot(repeat)
 
     except KeyboardInterrupt:
         sys.exit(0)

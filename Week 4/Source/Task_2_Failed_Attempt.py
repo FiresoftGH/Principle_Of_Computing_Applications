@@ -1,7 +1,8 @@
 import sys
+from this import d
+import matplotlib.pyplot as plot
 import random
 import math
-from time import time
 
 class Point: 
     def __init__(self, x_init, y_init): 
@@ -24,22 +25,7 @@ class Point:
         data = [distance, (self.x, self.y), (other.x, other.y)]
         return data
 
-distance_compare = []
-runtime_compare = []
-
-def findClosest(distance_objects):
-    start_time = time()
-    for index in range(len(distance_objects)):
-        distance_compare.append(distance_objects[index][0])
-    
-    minimum = min(distance_compare)
-    minimum_index = distance_compare.index(minimum)
-    print(min(distance_compare))
-    print("The answer is: ", distance_objects[minimum_index])
-    end_time = time()
-    runtime_compare.append(start_time - end_time)
-
-# point_objects = []
+point_objects = []
 distance_objects = []
 
 while True:
@@ -47,15 +33,24 @@ while True:
         number_of_points = int(input("How many times do you want the loop to run?: "))
         max_value = int(input("Max Value of coordinates: "))
         for index in range(number_of_points):
-            distance_objects.append(Point(random.randint(-max_value, max_value), 
-            random.randint(-max_value, max_value)).distance(Point(random.randint(-max_value, max_value), 
-            random.randint(-max_value, max_value))))
-            # point_objects.append(Point(random.randint(-max_value, max_value), random.randint(-max_value, max_value)).get_coord())
+            point_objects.append(Point(random.randint(-max_value, max_value), random.randint(-max_value, max_value)).get_coord())
+            internal_index = len(point_objects[index])
+            # point_count = len(point_objects)
 
+            if index != 0:
+                distance_objects.append(Point(point_objects[index][internal_index - 1], point_objects[index][internal_index]).distance(
+                    Point(point_objects[index - 1][internal_index - 1], point_objects[index - 1][internal_index])))
+        
+        print(point_objects)
+        for x in range(10):
+            print("")
+
+        distance_objects.append(Point(point_objects[index][internal_index - 1], point_objects[index][internal_index]).distance(
+                    Point(point_objects[index - 1][internal_index - 1], point_objects[index - 1][internal_index])))
         print(distance_objects)
-        findClosest(distance_objects)
+
         distance_objects = []
-        distance_compare = []
+        point_objects = []
         
     except KeyboardInterrupt:
         sys.exit(0)

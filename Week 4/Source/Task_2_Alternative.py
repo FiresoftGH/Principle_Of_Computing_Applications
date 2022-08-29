@@ -1,7 +1,13 @@
 import sys
 import random
 import math
+import matplotlib.pyplot as plot
+import numpy as np
 from time import time
+import keyboard as kb
+
+distance_compare = []
+runtime_compare = []
 
 class Point: 
     def __init__(self, x_init, y_init): 
@@ -23,24 +29,29 @@ class Point:
         distance = round(distance, 2)
         data = [distance, (self.x, self.y), (other.x, other.y)]
         return data
+    def findClosest(distance_objects):
+        start = time()
+        for index in range(len(distance_objects)):
+            distance_compare.append(distance_objects[index][0])
 
-distance_compare = []
-runtime_compare = []
+        minimum = min(distance_compare)
+        minimum_index = distance_compare.index(minimum)
+        # print(min(distance_compare))
+        print("The answer is: ", distance_objects[minimum_index])
+        end = time()
+        runtime = end - start
+        runtime_compare.append(runtime)
+        print(runtime_compare)
 
-def findClosest(distance_objects):
-    start_time = time()
-    for index in range(len(distance_objects)):
-        distance_compare.append(distance_objects[index][0])
-    
-    minimum = min(distance_compare)
-    minimum_index = distance_compare.index(minimum)
-    print(min(distance_compare))
-    print("The answer is: ", distance_objects[minimum_index])
-    end_time = time()
-    runtime_compare.append(start_time - end_time)
-
-# point_objects = []
+point_count = []
 distance_objects = []
+
+def plot_runtime():
+    xpoints = np.array(point_count)
+    ypoints = np.array(runtime_compare)
+
+    plot.plot(xpoints, ypoints)
+    plot.show()
 
 while True:
     try:
@@ -52,10 +63,16 @@ while True:
             random.randint(-max_value, max_value))))
             # point_objects.append(Point(random.randint(-max_value, max_value), random.randint(-max_value, max_value)).get_coord())
 
-        print(distance_objects)
-        findClosest(distance_objects)
+        point_count.append(number_of_points)
+        # print(distance_objects)
+        Point.findClosest(distance_objects)
         distance_objects = []
         distance_compare = []
+
+        plot_runtime()
         
     except KeyboardInterrupt:
+        sys.exit(0)
+
+    except TypeError:
         sys.exit(0)

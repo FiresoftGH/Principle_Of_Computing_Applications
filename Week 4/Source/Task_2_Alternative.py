@@ -55,7 +55,7 @@ def plot_runtime():
 
 while True:
     try:
-        number_of_points = int(input("How many times do you want the loop to run?: "))
+        number_of_points = int(input("How many times do you want the loop to run? (Two times the number of points): "))
         max_value = int(input("Max Value of coordinates: "))
         for index in range(number_of_points):
             distance_objects.append(Point(random.randint(-max_value, max_value), 
@@ -69,7 +69,8 @@ while True:
         distance_objects = []
         distance_compare = []
 
-        plot_runtime()
+        if len(runtime_compare) >= 5:
+            plot_runtime()
         
     except KeyboardInterrupt:
         sys.exit(0)

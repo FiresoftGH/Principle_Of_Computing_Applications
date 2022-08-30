@@ -265,8 +265,10 @@ def run_function(select, number, repeat):
         for times in range(repeat):
             m12(number)
 
+inputs = []
+
 def runtime_plot(repeat):
-    inputs = []
+    # inputs = []
     count = 0
     while count < repeat:
         count += 1
@@ -289,7 +291,7 @@ def runtime_plot(repeat):
 
 def runtime_mean():
     print(runtime_compare)
-    print(stats.trim_mean(runtime_compare, 0.1))
+    print("Average Runtime ", stats.trim_mean(runtime_compare, 0.1))
 
 choice_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 

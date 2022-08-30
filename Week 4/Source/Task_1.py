@@ -275,18 +275,21 @@ def runtime_plot(repeat):
         inputs.append(count)
     
     print(inputs)
-    runtime_plot = []
+    runtime_list = []
     for index in range(len(runtime_compare)):
         if index > 0:
-            total_time = runtime_compare[index] + runtime_plot[index - 1]
-            runtime_plot.append(total_time)
+            total_time = runtime_compare[index] + runtime_list[index - 1]
+            runtime_list.append(total_time)
         else:
-            runtime_plot.append(runtime_compare[0])
+            runtime_list.append(runtime_compare[0])
 
     xpoints = np.array(inputs)
-    ypoints = np.array(runtime_plot)
+    ypoints = np.array(runtime_list)
     plot.plot(xpoints, ypoints)
     plot.show()
+
+    inputs.clear()
+    runtime_list.clear()
     # plot.ylim(0, 10)
 
 def runtime_mean():
@@ -312,6 +315,9 @@ while True:
             else:
                 run_function(select, number, repeat)
                 runtime_plot(repeat)
+                runtime_compare.clear()
+                
+                
 
     except KeyboardInterrupt:
         sys.exit(0)

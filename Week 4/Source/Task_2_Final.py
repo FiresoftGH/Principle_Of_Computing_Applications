@@ -61,7 +61,7 @@ while True:
             random.randint(-max_value, max_value))))
             # point_objects.append(Point(random.randint(-max_value, max_value), random.randint(-max_value, max_value)).get_coord())
 
-        point_count.append(number_of_points / 2)
+        point_count.append(number_of_points * 2)
         # print(distance_objects)
         Point.findClosest(distance_objects)
         distance_objects = []

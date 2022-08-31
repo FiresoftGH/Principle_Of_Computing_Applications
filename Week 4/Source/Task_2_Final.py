@@ -8,6 +8,7 @@ import keyboard as kb
 
 distance_compare = []
 runtime_compare = []
+distance_data = []
 
 class Point: 
     def __init__(self, x_init, y_init): 
@@ -27,16 +28,13 @@ class Point:
     def distance(self, other):
         distance = math.sqrt((abs(self.x - other.x))**2 +(abs(self.y - other.y)**2))
         distance = round(distance, 2)
+        distance_data.append(distance)
         data = [distance, (self.x, self.y), (other.x, other.y)]
         return data
     def findClosest(distance_objects):
         start = time()
-        for index in range(len(distance_objects)):
-            distance_compare.append(distance_objects[index][0])
-
-        minimum = min(distance_compare)
-        minimum_index = distance_compare.index(minimum)
-        # print(min(distance_compare))
+        minimum = min(distance_data)
+        minimum_index = distance_data.index(minimum)
         print("The answer is: ", distance_objects[minimum_index])
         end = time()
         runtime = end - start
@@ -68,6 +66,7 @@ while True:
         Point.findClosest(distance_objects)
         distance_objects = []
         distance_compare = []
+        distance_data = []
 
         if len(runtime_compare) >= 5:
             plot_runtime()

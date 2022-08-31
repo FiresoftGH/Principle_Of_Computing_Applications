@@ -1,5 +1,5 @@
 output = []
-input1 = [1,2,3,4,5]
+input1 = [1,1,2,3,5,8]
 
 def mystery1(dummy):
     if len(dummy) == 1: # Base Case
@@ -20,6 +20,5 @@ def mystery1(dummy):
             output.append(b)
             print("Outputs: ", output)
             return b
-
 
 mystery1(input1)

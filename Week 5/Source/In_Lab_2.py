@@ -1,20 +1,18 @@
 import turtle
 debug = []
-
-def control():
-    turtle.dot(10, "black")
-    turtle.penup()
-    # turtle.left(180)
-    turtle.forward(20)
-    turtle.pendown()
-    # turtle.left(-180)
+turtle.penup()
 
 def stars1(n):
     if n > 1:
         stars = ""
         for x in range(n - 1):
             stars += "*"
-            control()
+            turtle.dot(10, "black")
+            turtle.fd(20)
+        turtle.goto(0, turtle.ycor())
+        turtle.right(90)
+        turtle.fd(20)
+        turtle.right(-90)
         print(stars)
         debug.append(stars)
         # print(debug)
@@ -23,6 +21,13 @@ def stars1(n):
         debug.reverse()
         for x in debug:
             print(x)
+            for x in range(len(x)): 
+                turtle.dot(10, "black")
+                turtle.fd(20)
+            turtle.goto(0, turtle.ycor())
+            turtle.right(90)
+            turtle.fd(20)
+            turtle.right(-90)
         
 
 stars1(5)

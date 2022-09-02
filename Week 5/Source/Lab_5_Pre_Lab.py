@@ -1,5 +1,5 @@
 output = []
-input1 = [1,1,2,3,5,8]
+input1 = [1,1,5,5,5,5]
 
 def mystery1(dummy):
     if len(dummy) == 1: # Base Case
@@ -22,3 +22,9 @@ def mystery1(dummy):
             return b
 
 mystery1(input1)
+
+"""
+Outputs the last element of the list with the same number
+as the number of the list
+
+"""

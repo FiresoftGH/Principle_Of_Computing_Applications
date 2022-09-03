@@ -29,16 +29,6 @@ def stars1(n):
             turtle.fd(20)
             turtle.right(-90)
         
-# stars1(5)
-convert = {}
-data_2 = []
-
-def stars2(n):
-    if n > 0:
-        for x in range(n):
-            val += 1
-        return
-        
-stars2(5)
+stars1(5)
 
 turtle.mainloop()

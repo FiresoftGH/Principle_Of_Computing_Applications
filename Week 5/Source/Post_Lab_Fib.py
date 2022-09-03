@@ -14,7 +14,7 @@ def rfib(n):
     else:
         return rfib(n - 1) + rfib(n - 2)
 
-print(rfib(100))
+# print(rfib(100))
 
 def ifib(n):
     if n < 0:
@@ -30,42 +30,49 @@ def ifib(n):
 # ifib(9)
 
 runtime_plot = []
+runtime_plot2 = []
 n_plot = []
+n_plot2 = []
 
 def plotting():
     xpoints = np.array(n_plot)
     ypoints = np.array(runtime_plot)
 
+    xpoints1 = np.array(n_plot2)
+    ypoints2 = np.array(runtime_plot2)
+
     plot.plot(xpoints, ypoints)
+    plot.plot(xpoints1, ypoints2)
     plot.show()
 
-# while True:
-#     try:
-#         n = int(input("Enter a term in fibonnaci sequence: "))
-#         n_plot.append(n)
-#         choice = int(input("Enter an alglorithm choice [1, 2]: "))
-#         if choice not in [1, 2]:
-#             print("Invalid Input")
+while True:
+    try:
+        n = int(input("Enter a term in fibonnaci sequence: "))
+        choice = int(input("Enter an alglorithm choice [1, 2]: "))
+        if choice not in [1, 2]:
+            print("Invalid Input")
 
-#         elif choice == 1:
-#             start = time()
-#             ifib(n) 
-#             end = time()
-#             runtime_plot.append(end - start)
+        elif choice == 1:
+            n_plot.append(n)
+            start = time()
+            ifib(n) 
+            end = time()
+            runtime_plot.append(end - start)
             
-#         else:
-#             start = time()
-#             rfib(n) #print for value
-#             end = time()
-#             runtime_plot.append(end - start)
+        else:
+            n_plot2.append(n)
+            start = time()
+            rfib(n) #print for value
+            end = time()
+            runtime_plot2.append(end - start)
 
-#         print(runtime_plot)
+        print(runtime_plot)
 
-#         if len(runtime_plot) > 4:
-#             plotting()
+        if len(runtime_plot) > 4:
+            plotting()
 
-#     except KeyboardInterrupt:
-#         sys.exit(0)
+    except KeyboardInterrupt:
+        sys.exit(0)
 
-#     except ValueError:
-#         print("Wrong Type")
+    except ValueError:
+        print("Wrong Type")

@@ -4,6 +4,7 @@ turtle.reset()
 turtle.shape("turtle")
 turtle.color("green")
 turtle.speed(-1)
+turtle.goto(-100, 0)
 turtle.lt(360)
 # turtle.seth(90)
  

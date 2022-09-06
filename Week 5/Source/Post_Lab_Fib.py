@@ -35,14 +35,15 @@ n_plot = []
 n_plot2 = []
 
 def plotting():
-    xpoints = np.array(n_plot)
-    ypoints = np.array(runtime_plot)
 
-    xpoints1 = np.array(n_plot2)
+    xpoints1 = np.array(n_plot)
+    ypoints1 = np.array(runtime_plot)
+
+    xpoints2 = np.array(n_plot2)
     ypoints2 = np.array(runtime_plot2)
 
-    plot.plot(xpoints, ypoints)
-    plot.plot(xpoints1, ypoints2)
+    plot.plot(xpoints1, ypoints1)
+    plot.plot(xpoints2, ypoints2)
     plot.show()
 
 while True:
@@ -68,11 +69,11 @@ while True:
 
         print(runtime_plot)
 
-        if len(runtime_plot) > 4:
+        if len(runtime_plot) > 5:
             plotting()
 
     except KeyboardInterrupt:
         sys.exit(0)
 
-    except ValueError:
-        print("Wrong Type")
+    # except ValueError:
+    #     print("Wrong Type")

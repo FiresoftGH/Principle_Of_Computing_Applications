@@ -1,4 +1,8 @@
 import random as rd
+import turtle
+import matplotlib.pyplot as plt
+import numpy as np
+
 class Point: 
     def __init__(self, x_init, y_init): 
         self.x = x_init 
@@ -34,7 +38,6 @@ class Line:
         self.list = list
 
     def construct(self):
-        self.list = []
         makeLine() 
         for index in range(len(xcor)):
             self.list.append([xcor[index], ycor[index]])
@@ -44,36 +47,57 @@ class Line:
         return self.list
 
     def join_line(self, other):
-        line_1 = self.list
-        line_2 = other.list
-        new_line = line_1 + line_2
-        line_2.clear()
+        line_a = self.list
+        line_b = other.list
+        new_line = line_a + line_b
+        line_b.clear()
         return new_line
 
     def zigzag1(self, other):
         line_3 = []
-        for index in range(len(self.list)):
-            line_3.append(self.list[index])
+        for index in range(len(other.list)):
+            if index < len(self.list):
+                line_3.append(self.list[index])
             line_3.append(other.list[index])
         
         self.list.clear()
         other.list.clear()
         return line_3
+
+    def zigzag2(self, other):
+        i = 0
+        for element in other.list:
+            if i < len(self.list) - 1:
+                self.list.insert(i + 1, element)
+                i += 2
+            else:
+                self.list.append(element)
+            
+        other.list.clear()
+        return self.list
+
 object_1 = Line([])
-object_2 = Line([])
+object_2 = Line([[1, 2]])
 
 line_1 = object_1.construct()
 line_2 = object_2.construct()
 
-# print(line_1)
-# print(line_2)
+print(line_1)
+print(line_2)
 
 # joined = object_1.join_line(object_2)
-zigzag = object_1.zigzag1(object_2)
-
 # print(joined)
 
-print(zigzag)
+# zigzag_1 = object_1.zigzag1(object_2)
+# print(zigzag_1)
+
+zigzag_2 = object_1.zigzag1(object_2)
+print(zigzag_2)
+
+
+
+
+
 
 
 

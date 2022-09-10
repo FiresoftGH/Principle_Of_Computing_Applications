@@ -20,25 +20,64 @@ class Point:
         pass
         # your code goes here 
 
+xcor = []
+ycor = []
+
+def makeLine():
+    for x in range(5):
+        point = Point(rd.randint(-10, 10), rd.randint(-10, 10))
+        xcor.append((point.get_x()))
+        ycor.append((point.get_y()))
+
 class Line:
-    def __init__(self, x_init, y_init):
-        super().__init__(x_init, y_init)
+    def __init__(self, list = []):
+        self.list = list
 
-    def construct(self, list):
-        list.append((self.x, self.y))
-        print(list)
+    def construct(self):
+        self.list = []
+        makeLine() 
+        for index in range(len(xcor)):
+            self.list.append([xcor[index], ycor[index]])
 
-objects = []
+        xcor.clear()
+        ycor.clear()
+        return self.list
 
-for x in range(5):
-    objects.append(Point(rd.randint(-10, 10), rd.randint(-10, 10)))
-    
-print(objects)
+    def join_line(self, other):
+        line_1 = self.list
+        line_2 = other.list
+        new_line = line_1 + line_2
+        line_2.clear()
+        return new_line
 
-line_objects = []
+    def zigzag1(self, other):
+        line_3 = []
+        for index in range(len(self.list)):
+            line_3.append(self.list[index])
+            line_3.append(other.list[index])
+        
+        self.list.clear()
+        other.list.clear()
+        return line_3
+object_1 = Line([])
+object_2 = Line([])
 
-for stuff in objects:
-    print(stuff)
+line_1 = object_1.construct()
+line_2 = object_2.construct()
+
+# print(line_1)
+# print(line_2)
+
+# joined = object_1.join_line(object_2)
+zigzag = object_1.zigzag1(object_2)
+
+# print(joined)
+
+print(zigzag)
+
+
+
+
 
 
 

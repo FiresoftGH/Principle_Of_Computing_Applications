@@ -94,7 +94,7 @@ zigzag_2 = object_1.zigzag1(object_2)
 print(zigzag_2)
 
 class TestLine:
-    def __init__(self):
+    def __init__(self, color):
         pass
     def get_axis():
         turtle.pensize(5)
@@ -106,15 +106,15 @@ class TestLine:
         turtle.lt(90)
         turtle.fd(600)
         turtle.pu()
-    def draw_line(line):
-        turtle.color("red")
+    def draw_line(line, color):
+        turtle.color(color)
         for y in range(len(line)):
             turtle.goto(line[y][0], line[y][1])
             turtle.pd()
     
 
 TestLine.get_axis()
-TestLine.draw_line(zigzag_2)
+TestLine.draw_line(zigzag_2, "green")
 turtle.mainloop()
 
 

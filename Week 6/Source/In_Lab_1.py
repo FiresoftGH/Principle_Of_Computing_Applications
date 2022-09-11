@@ -1,6 +1,5 @@
 import random as rd
 import turtle
-import matplotlib.pyplot as plt
 import numpy as np
 
 class Point: 
@@ -29,7 +28,7 @@ ycor = []
 
 def makeLine():
     for x in range(5):
-        point = Point(rd.randint(-10, 10), rd.randint(-10, 10))
+        point = Point(rd.randint(-250, 250), rd.randint(-250, 250))
         xcor.append((point.get_x()))
         ycor.append((point.get_y()))
 
@@ -94,8 +93,29 @@ print(line_2)
 zigzag_2 = object_1.zigzag1(object_2)
 print(zigzag_2)
 
+class TestLine:
+    def __init__(self):
+        pass
+    def get_axis():
+        turtle.pensize(5)
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(-300, 300)
+        turtle.pd()
+        turtle.fd(600)
+        turtle.lt(90)
+        turtle.fd(600)
+        turtle.pu()
+    def draw_line(line):
+        turtle.color("red")
+        for y in range(len(line)):
+            turtle.goto(line[y][0], line[y][1])
+            turtle.pd()
+    
 
-
+TestLine.get_axis()
+TestLine.draw_line(zigzag_2)
+turtle.mainloop()
 
 
 

@@ -84,14 +84,16 @@ line_2 = object_2.construct()
 print(line_1)
 print(line_2)
 
+# Uncomment these codes (choose only one) to create the operations you need.
+
 # joined = object_1.join_line(object_2)
 # print(joined)
 
-# zigzag_1 = object_1.zigzag1(object_2)
-# print(zigzag_1)
+zigzag_1 = object_1.zigzag1(object_2)
+print(zigzag_1)
 
-zigzag_2 = object_1.zigzag1(object_2)
-print(zigzag_2)
+# zigzag_2 = object_1.zigzag1(object_2)
+# print(zigzag_2)
 
 class TestLine:
     def __init__(self):
@@ -113,7 +115,8 @@ class TestLine:
             turtle.pd()
     
 TestLine.get_axis()
-TestLine.draw_line(zigzag_2, "green")
+# Chage zigzag_1 to whatever you to draw.
+TestLine.draw_line(zigzag_1, "green")
 turtle.mainloop()
 
 

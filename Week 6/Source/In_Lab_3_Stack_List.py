@@ -1,13 +1,14 @@
 from collections import deque
+
 class Stack:
     def __init__(self, data = []):
-        self.data = deque(data)
+        self.data = data
 
     def __str__(self):
         return f'Stack is {self.data}'
 
     def push(self, item):
-        return self.data.appendleft(item)
+        return [item] + self.data
 
     def pop(self):
         return self.data.pop()
@@ -25,6 +26,8 @@ class Stack:
         return len(self.data)
 
 stack = Stack(["A", "B", "C"])
+
+# Test cases
 
 print(stack.__str__())
 print(stack.pop())

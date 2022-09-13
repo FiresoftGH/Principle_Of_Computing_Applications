@@ -25,18 +25,18 @@ class Point:
 xcor = []
 ycor = []
 
-def makeLine():
-    for x in range(5):
-        point = Point(rd.randint(-250, 250), rd.randint(-250, 250))
-        xcor.append((point.get_x()))
-        ycor.append((point.get_y()))
-
 class Line:
     def __init__(self, list = []):
         self.list = list
 
+    def makeLine():
+        for x in range(5):
+            point = Point(rd.randint(-250, 250), rd.randint(-250, 250))
+            xcor.append((point.get_x()))
+            ycor.append((point.get_y()))
+
     def construct(self):
-        makeLine() 
+        Line.makeLine() 
         for index in range(len(xcor)):
             self.list.append([xcor[index], ycor[index]])
 
@@ -79,6 +79,8 @@ class Line:
 
 object_1 = Line([])
 object_2 = Line([[1, 2]])
+
+print(object_1.__str__())
 
 line_1 = object_1.construct()
 line_2 = object_2.construct()

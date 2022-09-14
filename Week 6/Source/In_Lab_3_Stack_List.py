@@ -36,5 +36,13 @@ print(stack.is_empty())
 print(stack.peek())
 print(stack.size())
 
+# Emptying the stack
+
+print(stack.pop())
+print(stack.pop())
+print(stack)
+
+# See error
+print(stack.pop()) 
 
 

@@ -47,7 +47,10 @@ class Stack:
             return self.data.pop(0)
 
     def peek(self):
-        return self.data[0]
+        if len(self.data) == 0:
+            return "Stack is Empty"
+        else:
+            return self.data[0]
 
     def is_empty(self):
         if len(self.data) == 0:
@@ -119,19 +122,28 @@ print(parking_lot)
 # User input
 # Comment out these if user input was not needed
 
-choice = ["exit", "enter"]
+choice = ["exit", "enter", "check", "check_all"]
 while True:
     try:
         print(f"Choices: {choice}")
-        print(f"Parking Lot: {parking_lot}")
+        # print(f"Parking Lot: {parking_lot}")
         select = str(input("Input here: "))
         if select not in choice:
             print("Invalid Choice")
         elif select == choice[0]:
             parking_lot.pop()
-        elif select == "enter":
+
+        elif select == choice[1]:
             operation = Reservation(names.get_first_name(), rd.choice(cars))
             operation.get_lot()
+
+        elif select == choice[2]:
+            print(parking_lot.peek())
+
+        elif select == choice[3]:
+            print(parking_lot.__str__())
+        
+
 
     except ValueError:
         sys.exit(0)

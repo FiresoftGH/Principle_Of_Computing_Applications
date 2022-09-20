@@ -3,13 +3,16 @@ class Stack:
         self.data = data
 
     def __str__(self):
-        return f'Stack is {self.data}'
+        return f'{self.data}'
 
     def push(self, item):
         return [item] + self.data
 
     def pop(self):
-        return self.data.pop()
+        if len(self.data) == 0:
+            return "Stack is Empty"
+        else:
+            return self.data.pop(0)
 
     def peek(self):
         return self.data[0]
@@ -40,6 +43,7 @@ print(stack.size())
 
 print(stack.pop())
 print(stack.pop())
+print(stack.size())
 print(stack)
 
 # See error

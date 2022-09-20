@@ -6,7 +6,7 @@ class Stack:
         return f'{self.data}'
 
     def push(self, item):
-        return [item] + self.data
+        return self.data.insert(0, item)
 
     def pop(self):
         if len(self.data) == 0:

@@ -1,6 +1,6 @@
 import random as rd
 import names
-from collections import deque
+import sys
 
 class Customer:
     def __init__(self, name, car):
@@ -57,10 +57,6 @@ class Stack:
     
     def size(self):
         return len(self.data)
-
-    def replace(self, item, position):
-        self.data[position] = item
-        return self.data
         
 parking_lot = Stack([])
 
@@ -120,4 +116,31 @@ for index in range(3):
 
 print(parking_lot)
 
+# User input
+# Comment out these if user input was not needed
+
+choice = ["exit", "enter"]
+while True:
+    try:
+        print(f"Choices: {choice}")
+        print(f"Parking Lot: {parking_lot}")
+        select = str(input("Input here: "))
+        if select not in choice:
+            print("Invalid Choice")
+        elif select == choice[0]:
+            parking_lot.pop()
+        elif select == "enter":
+            operation = Reservation(names.get_first_name(), rd.choice(cars))
+            operation.get_lot()
+
+    except ValueError:
+        sys.exit(0)
+    
+    except KeyboardInterrupt:
+        sys.exit(0)
+
+    except TypeError:
+        sys.exit(0)
+    
+            
 

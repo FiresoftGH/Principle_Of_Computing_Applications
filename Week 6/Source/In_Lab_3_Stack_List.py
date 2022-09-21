@@ -1,3 +1,6 @@
+from types import NoneType
+
+
 class Stack:
     def __init__(self, data = []):
         self.data = data
@@ -8,11 +11,11 @@ class Stack:
     def push(self, item):
         return self.data.insert(0, item)
 
-    def pop(self):
+    def pop(self, index):
         if len(self.data) == 0:
             return "Stack is Empty"
         else:
-            return self.data.pop(0)
+            return self.data.pop(index)
 
     def peek(self):
         if len(self.data) == 0:
@@ -50,6 +53,6 @@ print(stack.size())
 print(stack)
 
 # See error
-print(stack.pop()) 
+print(stack.pop(0)) 
 
 

@@ -143,8 +143,6 @@ while True:
         elif select == choice[3]:
             print(parking_lot.__str__())
         
-
-
     except ValueError:
         sys.exit(0)
     
@@ -153,8 +151,6 @@ while True:
 
     except TypeError:
         sys.exit(0)
-
-# Test
     
             
 

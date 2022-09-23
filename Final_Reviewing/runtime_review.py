@@ -43,16 +43,16 @@ def counter3(n):
 
 # Creating input list and graphing
 
-inputs = []
+# inputs = []
 inputs = [500 ,1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
 
-def makeInput(size):
-    number = 0
-    for x in range(size):
-        number += 20
-        inputs.append(number)
+# def makeInput(size):
+#     number = 0
+#     for x in range(size):
+#         number += 20
+#         inputs.append(number)
 
-makeInput(500)
+# makeInput(500)
 
 def makeGraph(xcor = [], ycor = []):
     # xcor.sort()
@@ -67,7 +67,7 @@ def makeGraph(xcor = [], ycor = []):
 
 def testCase():
     for elements in inputs:
-        counter3(elements)
+        counter1(elements)
 
 testCase()
 makeGraph(inputs, runtime)

@@ -1,6 +1,6 @@
 class Queue:
-    def __init__(self, array = []):
-        self.array = array
+    def __init__(self):
+        self.array = []
 
     def enqueue(self, item):
         return self.array.append(item)
@@ -26,7 +26,7 @@ class Queue:
         else:
             return self.array[0]
 
-queue = Queue([])
+queue = Queue()
 
 # Test case
 queue.enqueue(1)

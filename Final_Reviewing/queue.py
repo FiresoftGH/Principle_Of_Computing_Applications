@@ -26,6 +26,9 @@ class Queue:
         else:
             return self.array[0]
 
+    def __repr__(self):
+        return str(self.array)
+
 queue = Queue()
 
 # Test case
@@ -37,3 +40,4 @@ print(queue.first())
 queue.dequeue()
 print(queue.first())
 print(queue.len())
+print(queue)

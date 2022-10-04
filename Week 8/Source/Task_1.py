@@ -49,7 +49,7 @@ class UnorderedList:
         while current != None and not found:
             if current.getData() == item:
                 found = True
-
+        
         return found
 
     def remove(self, item):
@@ -69,5 +69,39 @@ class UnorderedList:
         else:
             previous.setNext(current.getNext())
 
+    def squish(self):
+        current = self.head
+        if current is None:
+            return None
+        while current.next is not None:
+            if current.getData() == current.next.getData():
+                operation = current.next.next
+                current.next = None
+                current.next = operation
+            else:
+                current = current.next
+
+        return self.head
+        
+    def printList(self):
+        operation = self.head
+        while (operation):
+            print(operation.data)
+            operation = operation.next
+
+    def dble(self):
+        current = self.head
+        while current != None:
+            operation = current.getData()
+            new_node = Node(operation)
+            new_node.setNext(current.getNext())
+            current.setNext(new_node)
+            current = current.getNext().getNext()
 myList = UnorderedList()
-myList.add(31)
+myList.add(1)
+myList.add(2)
+myList.add(1)
+myList.add(1)
+myList.dble()
+# print(myList.size())
+myList.printList()

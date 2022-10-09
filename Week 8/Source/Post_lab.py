@@ -27,35 +27,107 @@ class doubly_linked_list:
         if new_node.next is not None:
             new_node.next.prev = new_node
 
+    def append(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = None
+        if self.head is None:
+            new_node.prev = None
+            self.head = new_node
+            return
+        last = self.head
+        while (last.next is not None):
+            last = last.next
+        last.next = new_node
+        new_node.prev = last
+        return
+
     def listprint(self, node):
+        print("The score board: ")
         while node is not None:
             print(node.data)
             last = node
             node = node.next
 
-    def sortprintl(self):
+    def sortscore(self, item = []):
         current = self.head
-        while current is not None and current.next is not None:
-            current_data = current.data
-            next_data = current.next.data
-            if current.data[1] > current.next.data[1]:
-                current.data = next_data
-                current.next.data = current_data
+        if current == None or item[1] < self.head.data[1]:
+            self.push(item)
+            return
+        else:
+            currentdata = current.data[1]
+            while current != None:
+                if item[1] >= currentdata:
+                    current = current.next
+                    if current == None:
+                        self.append(item)
+                        return
+                    else:
+                        currentdata = current.data[1]
+                else:
+                    self.insert(current.prev, item)
+                    return
+
+    def remove(self, name):
+        current = self.head
+        if current.data[0] == name:
+            self.head = current.next
+            return
+        current = self.head
+        while current != None:
+            if current.data[0] == name:
+                current.prev.next = current.next
+                return
+            else:
+                current = current.next
+
+    def update(self, name, score):
+        current = self.head
+        while current != None:
+            current_name = current.data[0]
+            if current_name == name:
+                current.data[1] = score
+                if current.prev == None:
+                    self.head = current.next
+                    operator = [name, current.data[1]]
+                    self.sortscore(operator)
+                else:
+                    current.prev.next = current.next
+                    operator = [name, current.data[1]]
+                    self.sortscore(operator)
+                return
             current = current.next
-                
 
-    def sortprintg(self):
-        pass
-
+    def retrieve(self, name):
+        current = self.head
+        while current != None:
+            current_name = current.data[0]
+            if name == current_name:
+                print("Same Score:", name)
+                currentscore = current.data[1]
+                print(current.data)
+                next = current.next
+                prev = current.prev
+                while prev != None and prev.data[1] == currentscore:
+                    print(prev.data)
+                    prev = prev.prev
+                while next != None and next.data[1] == currentscore:
+                    print(next.data)
+                    next = next.next
+                return
+            current = current.next
+    
 def playerScore():
     return [names.get_last_name(), random.randint(0, 50)]
 
 double = doubly_linked_list()
-for x in range(10):
-    val = playerScore()
-    double.push(playerScore())
-
-double.sortprintl()
+double.sortscore(["Jayden", 13])
+double.sortscore(["Jean", 13])
+double.sortscore(playerScore())
+double.sortscore(playerScore())
+double.sortscore(playerScore())
 double.listprint(double.head)
-
-# reverse, retrieve, 
+double.retrieve("Jayden")
+double.remove("Jayden")
+double.listprint(double.head)
+double.update("Jean", 5)
+double.listprint(double.head)

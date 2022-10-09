@@ -8,7 +8,7 @@ class Node:
 
     def getData(self):
         return self.data
-
+        
     def getNext(self):
         return self.next
 

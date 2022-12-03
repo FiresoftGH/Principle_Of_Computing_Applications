@@ -55,6 +55,7 @@ class UnorderedList:
     def remove(self, item):
         current = self.head
         previous = None
+        found = False
         while not found:
             if current.getData() == item:
                 found = True
@@ -102,6 +103,7 @@ myList.add(1)
 myList.add(2)
 myList.add(1)
 myList.add(1)
-myList.dble()
+# myList.dble()
+myList.remove(1)
 # print(myList.size())
 myList.printList()

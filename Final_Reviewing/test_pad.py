@@ -1,8 +1,7 @@
-from time import time
-def counter4(n, count):
-    if n == 0:
-        return count
-    else:
-        return counter4(n - 1, count + 1)
+import random
+import random as rd
+array = []
+for x in range(10):
+    array.append(random.randint(0, 100))
 
-print(counter4(10, 0))
+print(array)

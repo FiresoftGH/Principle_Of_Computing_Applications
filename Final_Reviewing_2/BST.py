@@ -78,7 +78,7 @@ class BSTNode:
 
         if self.right is None:
             return False
-        return False
+        return self.right.exists(val)
     
     # Inorder printing mode
     def inorder(self, vals):
@@ -120,22 +120,29 @@ class BSTNode:
         return vals            
 
 test = BSTNode()
+test.insert(2)
 
 for x in range(6):
     val = rd.randint(-100, 100)
     print(val)
     test.insert(val)
 
+print(test.get_min())
 print(test.preorder([]))
 print(test.postorder([]))
 print(test.inorder([]))
 
-while True:
-    remove = int(input("Remove what?: "))
-    test.delete(remove)
-    print(test.preorder([]))
-    print(test.postorder([]))
-    print(test.inorder([]))
+test.delete(2)
+print(test.preorder([]))
+print(test.postorder([]))
+print(test.inorder([]))
+
+# while True:
+#     remove = int(input("Remove what?: "))
+#     test.delete(remove)
+#     print(test.preorder([]))
+#     print(test.postorder([]))
+#     print(test.inorder([]))
 
 
 

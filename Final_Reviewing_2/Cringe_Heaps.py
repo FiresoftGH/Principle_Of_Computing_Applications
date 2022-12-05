@@ -1,4 +1,4 @@
-testarray = [45,32,11,12,3,2,15,7]
+testarray = [-6, 4, -10, 2, -5, 7, 4, -5, 9, -1]
 
 def addelement(e, heap):
     heap.append(e)
@@ -48,7 +48,7 @@ def remove(e, heap):
 
 heap1 = heapify(testarray)
 print(heap1)
-heap1 = addelement(6, heap1)
-print(heap1)
-heap1 = remove(7, heap1)
+# heap1 = addelement(6, heap1)
+# print(heap1)
+# heap1 = remove(7, heap1)
 print(heap1)

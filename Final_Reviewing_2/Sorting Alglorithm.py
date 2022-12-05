@@ -89,4 +89,48 @@ array_5 = [36, 60, 84, 27, 73, 79, 0, 1, 54, 24]
 selection_sort(array_5)
 print(array_5)
 
+def bubblenew(array):
+   for index in range(len(array)):
+      for count in range(len(array) - index - 1):
+         next = array[count + 1]
+         if array[count] > next:
+            array[index], next = next, array[index]
+
+   return array
+
+bubblenew(array_2)   
+print(array_2)
+
+def binary_sort(array, element):
+   start = 0
+   final = len(array) - 1
+
+   while start <= final:
+      middle = (final + start) // 2
+
+      if array[middle] < element:
+         start = middle + 1
+
+      elif array[middle] > element:
+         final = middle - 1
+
+      else:
+         return middle
+
+   return
+
+ary = [1,2,3,4,5,6,7]
+result = binary_sort(ary, 6)
+print(result)
+
+def bubble_tea(array):
+   for index in range(len(array)):
+      for count in range(len(array) - index - 1):
+         next = array[count + 1]
+         if array[count] > next:
+            array[count], next = next, array[count]
+
+bubble_tea(array_2)   
+print(array_2)
+
 
